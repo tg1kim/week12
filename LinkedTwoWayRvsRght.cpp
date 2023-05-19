@@ -14,7 +14,7 @@ typedef struct {				// 양쪽으로 이동하기 위하여 변수 2개가 필요합니다.
 	Node *pRght;				// rght로 사용됩니다.
 }	TwoWay, *TwoWayPtr;			// 두 변수를 하나로 묶어서 사용하려고 합니다.
 
-#include "CmdListRvsR.h"
+#include "CmdListTwoR.h"
 
 void main()
 {

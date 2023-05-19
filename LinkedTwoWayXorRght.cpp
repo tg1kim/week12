@@ -17,7 +17,7 @@ typedef struct {
 	NodePtr pRght;
 }	TwoWay, *TwoWayPtr;
 
-#include "CmdListXorR.h"
+#include "CmdListTwoR.h"
 
 void main()
 {
