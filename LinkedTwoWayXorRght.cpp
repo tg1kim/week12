@@ -82,23 +82,23 @@ void main()
 int MoveRight(TwoWayPtr pTwo)
 {	// 오른쪽으로 한번 이동한다.
 	// 성공(실패)하면 true(false)를 return한다.
-	if (pTwo->pRght == NULL)
-		return false;
-	NodePtr pTemp = pTwo->pLeft;
-	pTwo->pLeft = pTwo->pRght;
-	pTwo->pRght = XOR2(pTemp, pTwo->pRght->link);
-	return true;
+	NodePtr pLeft = pTwo->pLeft, pRght = pTwo->pRght;
+	if (pRght) {
+		pTwo->pLeft = pRght;
+		pTwo->pRght = XOR2(pLeft, pRght->link);
+	}
+	return pRght != NULL;
 }
 
 int MoveLeft(TwoWayPtr pTwo)
 {	// 왼쪽으로 한번 이동한다.
 	// 성공(실패)하면 true(false)를 return한다.
-	if (pTwo->pLeft == NULL)
-		return false;
-	NodePtr pTemp = pTwo->pRght;
-	pTwo->pRght = pTwo->pLeft;
-	pTwo->pLeft = XOR2(pTemp, pTwo->pLeft->link);
-	return true;
+	NodePtr pLeft = pTwo->pLeft, pRght = pTwo->pRght;
+	if (pLeft) {
+		pTwo->pRght = pLeft;
+		pTwo->pLeft = XOR2(pRght, pLeft->link);
+	}
+	return pLeft != NULL;
 }
 
 int InsertNode(TwoWayPtr pTwo, int nData)
