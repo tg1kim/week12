@@ -84,9 +84,9 @@ int MoveRight(TwoWayPtr pTwo)
 	// 성공(실패)하면 true(false)를 return한다.
 	if (pTwo->pRght == NULL)
 		return false;
-	NodePtr pTemp = pTwo->pRght;
-	pTwo->pRght = XOR2(pTwo->pRght->link, pTwo->pLeft);
-	pTwo->pLeft = pTemp;
+	NodePtr pTemp = pTwo->pLeft;
+	pTwo->pLeft = pTwo->pRght;
+	pTwo->pRght = XOR2(pTemp, pTwo->pRght->link);
 	return true;
 }
 
@@ -95,9 +95,9 @@ int MoveLeft(TwoWayPtr pTwo)
 	// 성공(실패)하면 true(false)를 return한다.
 	if (pTwo->pLeft == NULL)
 		return false;
-	NodePtr pTemp = pTwo->pLeft;
-	pTwo->pLeft = XOR2(pTwo->pLeft->link, pTwo->pRght);
-	pTwo->pRght = pTemp;
+	NodePtr pTemp = pTwo->pRght;
+	pTwo->pRght = pTwo->pLeft;
+	pTwo->pLeft = XOR2(pTemp, pTwo->pLeft->link);
 	return true;
 }
 
