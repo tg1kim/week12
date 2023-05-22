@@ -80,25 +80,25 @@ void main()
 int MoveRight(TwoWayPtr pTwo)
 {	// 오른쪽으로 한번 이동한다.
 	// 성공하면 true를 return하고, 이동할 수 없으면 false를 return한다.
-	Node *pNode = pTwo->pRght;
-	if (pNode) {
-		pTwo->pRght = pNode->link;
-		pNode->link = pTwo->pLeft;
-		pTwo->pLeft = pNode;
-	}
-	return pNode != NULL;
+	if (pTwo->pRght == NULL)
+		return false;
+	NodePtr pTemp = pTwo->pLeft;
+	pTwo->pLeft = pTwo->pRght;
+	pTwo->pRght = pTwo->pRght->link;
+	pTwo->pLeft->link = pTemp;
+	return true;
 }
 
 int MoveLeft(TwoWayPtr pTwo)
 {	// 왼쪽으로 한번 이동한다.
 	// 성공하면 true를 return하고, 이동할 수 없으면 false를 return한다.
-	Node *pNode = pTwo->pLeft;
-	if (pNode) {
-		pTwo->pLeft = pNode->link;
-		pNode->link = pTwo->pRght;
-		pTwo->pRght = pNode;
-	}
-	return pNode != NULL;
+	if (pTwo->pLeft == NULL)
+		return false;
+	NodePtr pTemp = pTwo->pRght;
+	pTwo->pRght = pTwo->pLeft;
+	pTwo->pLeft = pTwo->pLeft->link;
+	pTwo->pRght->link = pTemp;
+	return true;
 }
 
 int InsertNode(TwoWay *pTwo, int nData)
